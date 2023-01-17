@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/cli-platform-android": "^10.1.0",
     "appcenter": "4.4.5",
     "appcenter-analytics": "4.4.5",
     "appcenter-crashes": "4.4.5",
