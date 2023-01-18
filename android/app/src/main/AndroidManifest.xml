@@ -1,20 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.eygsl.cbs.reactreferenceappuat">
 
+    <queries>
+        <package android:name="com.microsoft.emmx" />
+        <package android:name="com.microsoft.authenticator" />
+    </queries>
+    <permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-      android:name=".MainApplication"
-      android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
-      android:theme="@style/AppTheme">
+        android:name=".MainApplication"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="false"
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:launchMode="singleTask"
+            android:backupAgent="com.microsoft.intune.mam.client.app.backup.MAMDefaultBackupAgent"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
@@ -34,5 +41,14 @@
                     android:scheme="msauth" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.eygsl.cbs.reactreferenceappuat.utils.CustomFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 </manifest>
