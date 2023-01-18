@@ -13,6 +13,9 @@ import com.eygsl.cbs.reactreferenceappuat.newarchitecture.MainApplicationReactNa
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import com.microsoft.intune.mam.client.app.MAMComponents;
+import com.microsoft.intune.mam.policy.MAMEnrollmentManager;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -52,6 +55,10 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+
+    MAMEnrollmentManager mgr = MAMComponents.get(MAMEnrollmentManager.class);
+    // mgr.registerAccountForMAM("email","Client id","redirect url");
+
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
