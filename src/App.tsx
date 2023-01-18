@@ -28,7 +28,7 @@ const App = () => {
         <NavigationContainer>
           <Drawer.Navigator initialRouteName="HomePage">
             <Drawer.Screen 
-              name="Sample App"
+              name="React Reference App UAT"
               component={ HomePage }
               options={{
                 headerStyle: {

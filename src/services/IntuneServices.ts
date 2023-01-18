@@ -30,7 +30,7 @@ export const initialToken = async () => {
             authority:'https://login.microsoftonline.com/5b973f99-77df-4beb-b27d-aa0c70b8482c',
         };
         const result = await pca.acquireToken(params);
-        console.log('result', result);
+        console.log('result>>>>>>', result);
         // try {
         //   Msintune.initializeInTuneSDK(
         //     result.account.identifier,

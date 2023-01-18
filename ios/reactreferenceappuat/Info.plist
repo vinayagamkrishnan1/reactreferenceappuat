@@ -20,8 +20,40 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.eygsl.cbs.reactreferenceappuat</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msauth.com-eygsl-cbs-reactreferenceappuat</string>
+				<string>msauth.com.eygsl.cbs.reactreferenceappuat</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>microsoft-edge</string>
+		<string>microsoft-edge-http</string>
+		<string>microsoft-edge-https</string>
+		<string>msauthv3</string>
+		<string>msauthv2</string>
+		<string>com-microsoft-companyportal</string>
+		<string>com-microsoft-companyportal-intunemam</string>
+		<string>msauth</string>
+		<string>https-intunemam</string>
+		<string>http-intunemam</string>
+		<string>microsoft-edge-https-intunemam</string>
+		<string>microsoft-edge-http-intunemam</string>
+		<string>companyportal</string>
+		<string>lacoonsecurity</string>
+		<string>lookoutwork-ase</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

@@ -1,4 +1,4 @@
-package com.reactreferenceappuat;
+package com.eygsl.cbs.reactreferenceappuat;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

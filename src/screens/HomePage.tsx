@@ -23,25 +23,6 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    // async function init() {
-    //   try {
-    //     await b2cClient.init();
-    //     const token = await getItem("token");
-    //     const _username = await getItem("username");
-    //     setUsername(_username);
-    //     console.log("Tokne>>>>>>>>>>>>", token);
-    //     console.log("username>>>>>>>>>", _username);
-    //     if(!token) {
-    //       clearStorage();
-    //       initiateMSALAuthentication();
-    //     }
-    //   } catch (error: any) {
-    //     console.log("___Error while MSAL init", JSON.stringify(error));
-    //     clearStorage();
-    //     initiateMSALAuthentication();
-    //   }
-    // }
-    // init();
     async function init() {
       setLoading(true);
       try {
@@ -60,128 +41,8 @@ export const HomePage = () => {
         Alert.alert("MSAL RESPONSE>>>>error" + JSON.stringify(error));
       }
     }
-    
     init();
-
-
   }, []);
-
-
-  const initiateMSALAuthentication = async () => {
-    setLoading(true);
-    try {
-      const msalresponse = await b2cClient.signIn({
-        scopes: b2cScopes.scopes,
-        webviewParameters,
-      });
-
-
-      Alert.alert("MSAL response:::::" + JSON.stringify(msalresponse));
-
-      console.log("--------------------------", msalresponse);
-      // console.log("username>>>>>>>>", msalresponse?.account.username);
-      // console.log("token>>>>>>>>>>>", msalresponse?.accessToken);
-      console.log("???????????????????????", msalresponse?.idToken);
-      // if (Platform.OS == 'ios') {
-      //   NativeModules.IntuneWrapper.registerAndEnroll(msalresponse.account.username);
-      // } /*else {
-      //   NativeModules.IntuneWrapperModule.registerAndEnroll(
-      //     res.account.claims.preferred_username,
-      //     res.account.claims.aud[0],
-      //     res.account.tenantId,
-      //   );
-      // }*/
-      setItem("username", msalresponse?.account.username);
-      setItem("token", msalresponse?.accessToken);
-      setUsername(msalresponse?.account.username);
-      setResponse(msalresponse?.account);
-      setLoading(false);
-    } catch (error: any) {
-      setLoading(false);
-      Alert.alert("MSAL response:::::error" + JSON.stringify(error));
-    }
-  };
-
-
-  const openLink = async () => {
-    try {
-      const idToken = await getItem("idToken");
-      const username = await getItem('username');
-      // const url = `https://aka.ms/sspr/?username=${username}`;
-      const url = "https://ey.billyard.de"
-      console.log("Final url>>>>", url);
-      if (await InAppBrowser.isAvailable()) {
-        const result = await InAppBrowser.open(url, {
-          // iOS Properties
-          dismissButtonStyle: 'cancel',
-          preferredBarTintColor: '#453AA4',
-          preferredControlTintColor: 'white',
-          readerMode: false,
-          animated: true,
-          modalPresentationStyle: 'fullScreen',
-          modalTransitionStyle: 'coverVertical',
-          modalEnabled: true,
-          enableBarCollapsing: false,
-          // Android Properties
-          // Specify full animation resource identifier(package:anim/name)
-          // or only resource name(in case of animation bundled with app).
-          animations: {
-            startEnter: 'slide_in_right',
-            startExit: 'slide_out_left',
-            endEnter: 'slide_in_left',
-            endExit: 'slide_out_right'
-          },
-          // headers: {
-          //   'Authorization': `Bearer ${idToken}`
-          // }
-        });
-      }
-    } catch (error: any) {
-      console.log(">>>>>>Error", JSON.stringify(error));
-      Alert.alert(">>>>>>>>>>>", JSON.stringify(error));
-      Alert.alert(">>LLLLLLLLL" + error.message || "No inapp browser")
-    }
-  }
-
-  const openWebLink = async () => {
-    try {
-      const idToken = await getItem("idToken");
-      const username = await getItem('username');
-      // const url = `https://aka.ms/sspr/?username=${username}`;
-      const url = "https://webapp.billyard.de"
-      console.log("Final url>>>>", url);
-      if (await InAppBrowser.isAvailable()) {
-        const result = await InAppBrowser.open(url, {
-          // iOS Properties
-          dismissButtonStyle: 'cancel',
-          preferredBarTintColor: '#453AA4',
-          preferredControlTintColor: 'white',
-          readerMode: false,
-          animated: true,
-          modalPresentationStyle: 'fullScreen',
-          modalTransitionStyle: 'coverVertical',
-          modalEnabled: true,
-          enableBarCollapsing: false,
-          // Android Properties
-          // Specify full animation resource identifier(package:anim/name)
-          // or only resource name(in case of animation bundled with app).
-          animations: {
-            startEnter: 'slide_in_right',
-            startExit: 'slide_out_left',
-            endEnter: 'slide_in_left',
-            endExit: 'slide_out_right'
-          },
-          // headers: {
-          //   'Authorization': `Bearer ${idToken}`
-          // }
-        });
-      }
-    } catch (error: any) {
-      console.log(">>>>>>Error", JSON.stringify(error));
-      Alert.alert(">>>>>>>>>>>", JSON.stringify(error));
-      Alert.alert(">>LLLLLLLLL" + error.message || "No inapp browser")
-    }
-  }
 
 
   return (
@@ -211,18 +72,6 @@ export const HomePage = () => {
             <Text>Something went wrong please try again later.</Text>
           </View>
         }
-
-        <Button
-          onPress={openLink}
-          title="Open Link"
-          color="#841584"
-        />
-
-        <Button
-          onPress={openWebLink}
-          title="Open Web Link"
-          color="#841584"
-        />
 
         {/* <TouchableOpacity>
           <Button

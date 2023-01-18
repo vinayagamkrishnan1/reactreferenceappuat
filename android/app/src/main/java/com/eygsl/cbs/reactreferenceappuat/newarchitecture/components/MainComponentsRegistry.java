@@ -1,4 +1,4 @@
-package com.reactreferenceappuat.newarchitecture.components;
+package com.eygsl.cbs.reactreferenceappuat.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

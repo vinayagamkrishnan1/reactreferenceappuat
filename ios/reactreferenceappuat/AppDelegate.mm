@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 
+#import <MSAL/MSAL.h>
 #import <AppCenterReactNative.h>
 #import <AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNativeCrashes.h>
@@ -67,6 +68,17 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
   
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    if ([MSALPublicClientApplication handleMSALResponse:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]])
+    {
+        NSLog(@"This URL is handled by MSAL");
+    }
+    return YES;
 }
 
 /// This method controls whether the `concurrentRoot`feature of React18 is turned on or off.
