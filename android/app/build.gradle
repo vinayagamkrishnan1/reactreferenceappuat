@@ -212,6 +212,7 @@ android {
             include (*reactNativeArchitectures())
         }
     }
+    /*
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -232,7 +233,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-
+    */
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
